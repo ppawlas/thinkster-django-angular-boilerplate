@@ -3,7 +3,7 @@
  */
 
 /**
- * Register controller
+ * LoginController
  * @namespace thinkster.authentication.controllers
  */
 (function () {
@@ -11,24 +11,24 @@
 
     angular
         .module('thinkster.authentication.controllers')
-        .controller('RegisterController', RegisterController);
+        .controller('LoginController', LoginController);
 
-    RegisterController.$inject = ['$location', '$scope', 'Authentication'];
+    LoginController.$inject = ['$location', '$scope', 'Authentication'];
 
     /**
-     * @namespace RegisterController
+     * @namespace LoginController
      */
-    function RegisterController($location, $scope, Authentication) {
+    function LoginController($location, $scope, Authentication) {
         var vm = this;
 
-        vm.register = register;
+        vm.login = login;
 
         activate();
 
         /**
          * @name activate
          * @desc Actions to be performed when this controller is instantiated
-         * @memberOf thinkster.authentication.controllers.RegisterController
+         * @memberOf thinkster.authentication.controllers.LoginController
          */
         function activate() {
             // If the user is authenticated, they should not be here.
@@ -38,12 +38,12 @@
         }
 
         /**
-         * @name register
-         * @desc Register a new user
-         * @memberOf thinkster.authentication.controllers.RegisterController
+         * @name login
+         * @desc Log the user in
+         * @memberOf thinkster.authentication.controllers.LoginController
          */
-        function register() {
-            Authentication.register(vm.email, vm.password, vm.username);
+        function login() {
+            Authentication.login(vm.email, vm.password);
         }
     }
 })();
