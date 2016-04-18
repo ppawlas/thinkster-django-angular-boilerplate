@@ -59,7 +59,7 @@
          * @desc Log the new user in
          */
         function registerSuccessFn(data, status, headers, config) {
-            Authentication.login(email, password);
+            Authentication.login(data.data.email, data.data.password);
         }
 
         /**
@@ -109,11 +109,11 @@
          * @memberOf thinkster.authentication.services.Authentication
          */
         function getAuthenticatedAccount() {
-            if(!$cookies.authenticatedAccount) {
+            if(!$cookies.get('authenticatedAccount')) {
                 return;
             }
 
-            return JSON.parse($cookies.authenticatedAccount);
+            return JSON.parse($cookies.get('authenticatedAccount'));
         }
 
         /**
@@ -123,7 +123,7 @@
          * @memberOf thinkster.authentication.services.Authentication
          */
         function isAuthenticated() {
-            return !!$cookies.authenticatedAccount;
+            return !!$cookies.get('authenticatedAccount');
         }
 
         /**
@@ -134,7 +134,7 @@
          * @memberOf thinkster.authentication.services.Authentication
          */
         function setAuthenticatedAccount(account) {
-            $cookies.authenticatedAccount = JSON.stringify(account);
+            $cookies.put('authenticatedAccount', JSON.stringify(account));
         }
 
         /**
@@ -144,7 +144,7 @@
          * @memberOf thinkster.authentication.services.Authentication
          */
         function unauthenticate() {
-            delete $cookies.authenticatedAccount;
+            $cookies.remove('authenticatedAccount');
         }
     }
 })();
