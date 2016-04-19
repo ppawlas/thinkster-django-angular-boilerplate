@@ -1,4 +1,3 @@
-import json
 from rest_framework import permissions, viewsets, status, views
 from rest_framework.response import Response
 from authentication.models import Account
