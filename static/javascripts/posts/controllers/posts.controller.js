@@ -10,7 +10,7 @@
     'use strict';
 
     angular
-        .module('thinkster.posts.controller')
+        .module('thinkster.posts.controllers')
         .controller('PostsController', PostsController);
 
     PostsController.$inject = ['$scope'];
